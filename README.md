@@ -8,8 +8,35 @@ This idea was conceptualized during discussions in the discord dev channels. We 
 
 ### Planned Enhancements
 
-1.  Command auto completion support
-2.  Command chaining support
-3.  Improve UX/UI
-4.  Add support to add cadence code in cell
-5.  Dockerise and host
+- Auto install of Flow Command Line (if it doesn't exist already)
+- Command auto completion support
+- Command chaining support
+- Improve UX/UI
+- Add support to add cadence code in cell
+- Dockerise and host
+
+### Test the Kernel
+
+- Install Flow's command line
+- Clone Repo
+- Edit / update flow.json
+
+Start the kernel
+```
+python3 -m flowjupyter
+```
+Verify emulator has started
+```
+roger@roger:~/dev/flowjupyter$ ps -ef|grep flow
+roger    1237520 1055869  0 18:35 ?        00:00:00 flow cadence language-server --enable-flow-client=false
+roger    1237784    2185  0 18:36 ?        00:00:00 flow emulator start
+roger    1239355 1090745  3 18:57 pts/18   00:00:00 python3 -m flowjupyter
+roger    1239423 1230558  0 18:57 pts/20   00:00:00 grep --color=auto flow
+roger@roger:~/dev/flowjupyter$ 
+```
+
+Execute the following commands
+```
+flow blocks get latest --network=emulator
+flow accounts get f8d6e0586b0a20c7
+```
