@@ -1,1 +1,5 @@
-{"argv": ["python3", "FlowJupyter.py"], "display_name": "Flow Jupyter", "language": "bash"}
+{
+    "argv": ["python3", "-m", "flowjupyter"],
+    "display_name": "Flow",
+    "language": "python"
+}

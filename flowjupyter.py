@@ -2,13 +2,22 @@ from ipykernel.kernelbase import Kernel
 import os
 import subprocess
 
-class FlowJupyter(Kernel):
-    implementation = 'FlowJupyter'
+class Flowjupyter(Kernel):
+    implementation = 'flowjupyter'
     implementation_version = '0.1'
     language = 'flow command line'
     language_version = '0.1'    
     banner = "Flow kernel - flow jupyter! "
 
+    def __init__(self, **kwargs):
+        Kernel.__init__(self, **kwargs)
+        self.start_flow(**kwargs)
+        
+
+    def start_flow(self, **kwargs):        
+            cmd = 'flow emulator start'      
+            print(subprocess.run(["flow", "emulator", "start"], capture_output=True))
+            
     def do_execute(self, code, silent, store_history=True, user_expressions=None,
                    allow_stdin=False):
         if not silent:
@@ -27,4 +36,4 @@ class FlowJupyter(Kernel):
             
 if __name__ == '__main__':
     from ipykernel.kernelapp import IPKernelApp
-    IPKernelApp.launch_instance(kernel_class=FlowJupyter)
+    IPKernelApp.launch_instance(kernel_class=Flowjupyter)
